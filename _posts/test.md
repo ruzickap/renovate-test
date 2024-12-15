@@ -17,5 +17,5 @@ METRICS_SERVER_HELM_CHART_VERSION="3.12.0"
 EXTERNAL_DNS_HELM_CHART_VERSION="1.14.0"
 
 # renovate: datasource=helm depName=ingress-nginx registryUrl=https://kubernetes.github.io/ingress-nginx
-INGRESS_NGINX_HELM_CHART_VERSION="4.11.0"
+INGRESS_NGINX_HELM_CHART_VERSION="4.11.3"
 ```
