@@ -1,0 +1,40 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  branchPrefix: "renovate-pr/",
+  customManagers: [
+    {
+      customType: "regex",
+      extractVersionTemplate: "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      fileMatch: ["\\.md$",],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)( versioning=(?<versioning>.+?))?( extractVersion=(?<extractVersion>.+?))?( registryUrl=(?<registryUrl>.+?))?\\s.*[=:]\\s*"?(?<currentValue>.+?)"?\\s',
+      ],
+      versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
+    },
+  ],
+  // Keep the extends started with ":" at the end of the list to allow overriding
+  extends: [
+    "config:recommended",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigestsToSemver",
+    "security:openssf-scorecard",
+    ":disableDependencyDashboard",
+    ":disableRateLimiting",
+    ":docker",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    ":pinSkipCi",
+  ],
+  packageRules: [
+    {
+      automerge: true,
+      commitBody: "[skip ci]",
+      description: "Automerge all without running any tests",
+      ignoreTests: true,
+      matchPackagePatterns: ["*"],
+    },
+  ],
+  prConcurrentLimit: 500,
+  prHourlyLimit: 500,
+  prCommitsPerRunLimit: 500,
+  branchConcurrentLimit: 500,
+}
