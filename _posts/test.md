@@ -8,7 +8,7 @@ MAILPIT_HELM_CHART_VERSION="0.18.0"
 KUBE_PROMETHEUS_STACK_HELM_CHART_VERSION="65.0.0"
 
 # renovate: datasource=helm depName=cert-manager registryUrl=https://charts.jetstack.io
-CERT_MANAGER_HELM_CHART_VERSION="1.16.0"
+CERT_MANAGER_HELM_CHART_VERSION="1.16.2"
 
 # renovate: datasource=helm depName=metrics-server registryUrl=https://kubernetes-sigs.github.io/metrics-server/
 METRICS_SERVER_HELM_CHART_VERSION="3.12.0"
